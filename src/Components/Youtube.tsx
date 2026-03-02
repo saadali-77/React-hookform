@@ -29,8 +29,10 @@ export const Youtube = () => {
         twitter: "",
       },
       phNumber:[{number:''}],
-      dob: new Date()
+      dob: new Date(),
+      
     },
+    mode:'onBlur'
   });
 
   const { register, control, handleSubmit, formState,watch,getValues,setValue,reset } = form;
