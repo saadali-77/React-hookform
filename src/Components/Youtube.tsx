@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, type FieldErrors } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { useFieldArray } from "react-hook-form";
 let render = 0;
@@ -55,7 +55,9 @@ control
 const  handleField= ()=>{
   console.log('watch field',getValues('Username'))
 }
-
+ const  onError= (error:FieldErrors<FormData>)=>{
+  console.log(error)
+ }
 
 
   return (
@@ -67,7 +69,7 @@ const  handleField= ()=>{
      <h2>watch username:{watchfield}</h2>
         </div>
        
-        <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
+        <form className="form" onSubmit={handleSubmit(onSubmit,onError)} noValidate>
 
           {/* Username */}
           <div className="input-group">
