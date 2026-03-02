@@ -132,6 +132,7 @@ const  handleField= ()=>{
             <input
               type="text"
               {...register("social.facebook", {
+                disabled:watch('Username')==='',
                 required: "Facebook is required",
               })}
               placeholder="Enter Facebook link"
