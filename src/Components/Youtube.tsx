@@ -35,7 +35,7 @@ export const Youtube = () => {
     mode:'onBlur'
   });
 
-  const { register, control, handleSubmit, formState,watch,getValues,setValue,reset } = form;
+  const { register, control, handleSubmit, formState,watch,getValues,setValue,reset,trigger } = form;
   const { errors,isDirty ,isValid,isSubmitting,isSubmitSuccessful} = formState;
   console.log(isSubmitting)
   console.log(isDirty)
@@ -210,7 +210,7 @@ useEffect(()=>{
 
           <button type="button" onClick={setField}>set field</button> 
            // <button onClick={()=>reset()}>reset</button>
-
+          <button type="button" onClick={()=>trigger('Username')}>trigger </button>
 
           <button type="submit" className="submit-btn" disabled= {!isDirty || !isValid || isSubmitting}>
             Submit
