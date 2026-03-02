@@ -33,7 +33,7 @@ export const Youtube = () => {
   });
 
   const { register, control, handleSubmit, formState,watch,getValues,setValue } = form;
-  const { errors,isDirty } = formState;
+  const { errors,isDirty ,isValid} = formState;
   console.log(isDirty)
   const watchfield= watch('Username')
  const {fields,append,remove} =useFieldArray({
@@ -205,7 +205,7 @@ const  handleField= ()=>{
 
 
 
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn" disabled= {!isDirty || !isValid}>
             Submit
           </button>
         </form>
