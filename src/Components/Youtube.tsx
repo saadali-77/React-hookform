@@ -1,6 +1,7 @@
 import { useForm, type FieldErrors } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { useFieldArray } from "react-hook-form";
+import { useEffect } from "react";
 let render = 0;
 
 type FormData = {
@@ -32,8 +33,8 @@ export const Youtube = () => {
     },
   });
 
-  const { register, control, handleSubmit, formState,watch,getValues,setValue } = form;
-  const { errors,isDirty ,isValid,isSubmitting} = formState;
+  const { register, control, handleSubmit, formState,watch,getValues,setValue,reset } = form;
+  const { errors,isDirty ,isValid,isSubmitting,isSubmitSuccessful} = formState;
   console.log(isSubmitting)
   console.log(isDirty)
   const watchfield= watch('Username')
@@ -59,7 +60,10 @@ const  handleField= ()=>{
  const  onError= (error:FieldErrors<FormData>)=>{
   console.log(error)
  }
-
+useEffect(()=>{
+  if(isSubmitSuccessful)
+    reset()
+},[isSubmitSuccessful,reset])
 
   return (
     <div className="container">
@@ -203,10 +207,10 @@ const  handleField= ()=>{
         <button type="button" onClick={handleField}>watch field</button>
 
           <button type="button" onClick={setField}>set field</button> 
+           // <button onClick={()=>reset()}>reset</button>
 
 
-
-          <button type="submit" className="submit-bt" disabled= {!isDirty || !isValid || isSubmitting}>
+          <button type="submit" className="submit-btn" disabled= {!isDirty || !isValid || isSubmitting}>
             Submit
           </button>
         </form>
