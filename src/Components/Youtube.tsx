@@ -180,7 +180,7 @@ const  handleField= ()=>{
          })}
 
        
-        <button type="button" onClick={()=>append({number:''})}>add phone</button>
+        <button type="button" onClick={()=>append({number:''})}>Add phone</button>
 
          </div>
     
