@@ -32,7 +32,7 @@ export const Youtube = () => {
     },
   });
 
-  const { register, control, handleSubmit, formState,watch,getValues } = form;
+  const { register, control, handleSubmit, formState,watch,getValues,setValue } = form;
   const { errors } = formState;
   const watchfield= watch('Username')
  const {fields,append,remove} =useFieldArray({
@@ -43,6 +43,13 @@ control
     console.log("successful submit", data);
   };
 
+  const setField= ()=>{
+    setValue("Username", '',{
+      shouldTouch:true,
+      shouldValidate:true,
+      shouldDirty:true
+    })
+  }
   render++;
 const  handleField= ()=>{
   console.log('watch field',getValues('Username'))
@@ -190,7 +197,7 @@ const  handleField= ()=>{
          </div>
         <button type="button" onClick={handleField}>watch field</button>
 
-
+          <button type="button" onClick={setField}>set field</button> 
 
 
 
